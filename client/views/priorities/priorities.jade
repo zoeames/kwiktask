@@ -1,0 +1,28 @@
+h3 Priorities
+.row
+  .col-xs-5
+  .col-xs-2
+    h5 Create New Priority:
+    form(role='form', novalidate, ng-hide='hidePriority', name='priorityForm')
+      .form-group
+        input.form-control#priority(ng-minlength='3', required, ng-model='priority.name', type='text', name='name', autofocus)
+      .form-group
+        input.form-control#color(required, ng-model='priority.color', type='color', name='color')
+      button.btn.btn-primary(ng-click='add()', ng-show='priorityForm.$valid') Add Priority
+  .col-xs-5
+.row
+    .col-xs-5
+    .col-xs-2
+      .pannel.pannel-default
+        .pannel-body
+          table.table.table-hover.table-bordered
+            thead
+              tr
+                th Name
+                th Color
+            body
+              tr(ng-repeat='p in priorities | orderBy:"name"', ng-style='{"background-color":p.color}')
+                td {{p.name}}
+                td {{p.color}}
+    .col-xs-5
+
